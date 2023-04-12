@@ -24,4 +24,5 @@ def top(arr):
 
 a = [1, 2, 2, 3, 3, 5, 6, 3, 7, 7, 2, 9]
 
-print(top(a))
+if __name__ == '__main__':
+    print(top(a))
