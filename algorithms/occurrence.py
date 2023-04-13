@@ -18,6 +18,9 @@ def first_occurrence(array, element):
     if array[low] == element:
         return low
 
-#a = [2, 2, 2, 4, 4, 4, 4, 6, 6, 6]
-#print(first_occurrence(a, 4))
+
+if __name__ == "__main__":
+    a = [2, 2, 2, 4, 4, 4, 4, 6, 6, 6]
+    print(first_occurrence(a, 4))
+    print(first_occurrence(a, 2))
 
