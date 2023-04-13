@@ -9,6 +9,8 @@ Implementations are for learning purposes only. They may be less efficient than 
 For running all tests write down:
 
     $ python3 -m pytest tests
-or
+
+OR
+
 	$ poetry run pytest -v
 
