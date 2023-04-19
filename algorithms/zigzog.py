@@ -24,8 +24,9 @@ class ZigZag:
             return False
 
     
-#z = ZigZag(a, b)
 
-#while z.has_next():
-#    print(z.next(), end=' ')
+if __name__ == "__main__":
+    z = ZigZag(a, b)
+    while z.has_next():
+        print(z.next(), end=' ')
 
