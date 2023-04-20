@@ -1,9 +1,14 @@
 
-def rotate(s, r):
+
+def rotate(s, k):
     double_s = s + s
 
-    if r <= len(s):
-        return double_s[r:len(s)]
+    if k <= len(s):
+        return double_s[k:k+len(s)]
+    else:
+        return double_s[k-len(s):k]
 
 
-print(rotate("HassanHassan", 2))
+if __name__ == '__main__':
+    print(rotate("Hello", 2))
+    print(rotate("World", 3))
