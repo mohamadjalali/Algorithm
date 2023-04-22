@@ -55,7 +55,18 @@ class LinkedList:
         if self.length == 0:
             self.tail = None
         return temp
-    
+
+    def pop(self):
+        if self.length == 0:
+            return None
+        temp = self.get(self.length - 2)
+        if temp:
+            temp.next = None
+        self.length -= 1
+        print(self.length)
+        if self.length == 0:
+            self.head = None
+        return temp
     
     def get(self, index):
         if index < 0 or index >= self.length:
@@ -87,9 +98,25 @@ class LinkedList:
         temp = self.get(index - 1)
         new_node.next = temp.next
         temp.next = new_node
-        return new_node.value
+        self.length += 1
+        return True
 
+    
+    def remove(self, index):
 
+        if index < 0 or index >= self.length:
+            return None
+        # If the index is zero, then head points to the next node.
+        if index == 0:
+            self.pop_first()
+        if index == self.length - 1:
+            temp = self.get(index - 1)
+            self.tail = temp
+            self.tail.next = None
+        self.length -= 1
+        return True
+
+            
 if __name__ == "__main__":
     my_linked_list = LinkedList(2)
     my_linked_list.append(8)
@@ -97,5 +124,11 @@ if __name__ == "__main__":
     my_linked_list.prepend(1)
     my_linked_list.set_value(3, 10)
     my_linked_list.insert(2, 7)
+    my_linked_list.pop()
+    my_linked_list.pop()
+    my_linked_list.pop()
+    my_linked_list.pop()
+    my_linked_list.pop()
+    #my_linked_list.remove(4)
     my_linked_list.print_list()
 
