@@ -3,6 +3,7 @@ class Node:
         self.value = value
         self.next  = None
 
+
 class LinkedList:
 	
     def __init__(self, value):
@@ -63,9 +64,9 @@ class LinkedList:
         if temp:
             temp.next = None
         self.length -= 1
-        print(self.length)
         if self.length == 0:
             self.head = None
+            self.tail = None
         return temp
     
     def get(self, index):
@@ -109,26 +110,34 @@ class LinkedList:
         # If the index is zero, then head points to the next node.
         if index == 0:
             self.pop_first()
-        if index == self.length - 1:
-            temp = self.get(index - 1)
-            self.tail = temp
-            self.tail.next = None
+        if index == (self.length - 1):
+            self.pop()
+        prev = self.get(index - 1)
+        temp = prev.next
+        prev.next = temp.next
+        temp.next = None
         self.length -= 1
-        return True
+        return temp
 
-            
+    
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after  = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+        
+
+
 if __name__ == "__main__":
     my_linked_list = LinkedList(2)
     my_linked_list.append(8)
     my_linked_list.append(9)
-    my_linked_list.prepend(1)
-    my_linked_list.set_value(3, 10)
     my_linked_list.insert(2, 7)
-    my_linked_list.pop()
-    my_linked_list.pop()
-    my_linked_list.pop()
-    my_linked_list.pop()
-    my_linked_list.pop()
-    #my_linked_list.remove(4)
+    my_linked_list.reverse()
     my_linked_list.print_list()
-
