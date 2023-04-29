@@ -45,24 +45,52 @@ class DoublyLinkedList:
 
 
     def pop(self):
-        # The temp variable is equal to the previous tail node.
-        temp = self.tail.prev
-        # In order to pop the last node, we have to remove the
-        # references related to it, we set the tail.prev reference to None.
-        self.tail.prev = None
-        # temp.next, which points to the last node, is also equal to None.
-        temp.next = None
-        # tail is also equal to temp.
-        self.tail = temp
+        # Returns None if there are no nodes.
+        if self.length == 0:
+            return None
+
+        # The tail variable represents the popped node,
+        # which is finally returned as the popped node.
+        temp = self.tail
+        # If there is a node, head and tail are equal to None,
+        if self.length ==1:
+            self.head = None
+            self.tail = None
+
+        else:
+            # The tail becomes equal to its previous node.
+            self.tail = self.tail.prev
+            # The tail.next node points to None.
+            self.tail.next = None
+            temp.prev = None
+
         self.length -= 1
+        return temp
+
+    
+    def prepend(self, value):
+        new_node = NodeList(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            # To link (next) the new node with head
+            new_node.next  = self.head
+            # Also, to connect the return link (prev) with the new node, we act as follows.
+            self.head.prev = new_node
+            # As a rule, the new_node node, which represents the first node, its arrow(prev) should point to None.
+            new_node.prev = None
+            # Finally, the head node must point to new_node.
+            self.head = new_node
+        self.length += 1
         return True
+
 
 
 if __name__ == "__main__":
     linked = DoublyLinkedList(23)
-    linked.append(25)
-    linked.append(26)
-    linked.pop()
+    linked.append(25) 
+    linked.prepend(1)
     linked.print_list()
 
 
