@@ -42,12 +42,16 @@ class OneTime:
         return result
 
 
-# To run the program, uncomment the following lines.
-#onetime = OneTime()
+if __name__ == "__main__":
 
-#print(onetime.encrypt("Hello, world!"))
+    onetime = OneTime()
 
-# We need two key (cipher and key) to decrypt the message.
-#c, k = OneTime().encrypt('Hello, world!')
-#print(onetime.decrypt(c, k))
+    # If you want password and key, please uncomment the code below, otherwise comment.
+    print(onetime.encrypt("Hello, world!"))
+
+    # The output of the encrypt method includes cipher and key,
+    # which we set two variables named c and k equal to.
+    c, k = OneTime().encrypt('Hello, world!')
+    
+    print(onetime.decrypt(c, k))
 
