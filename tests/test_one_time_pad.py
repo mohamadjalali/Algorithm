@@ -8,4 +8,3 @@ def test_encrypt():
     assert onetime.decrypt(cipher, key) == "Hello, World!"
     assert onetime.decrypt_2(cipher, key) == "Hello, World!"
 
-test_encrypt()
