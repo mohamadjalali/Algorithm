@@ -17,6 +17,16 @@ class DoublyLinkedList:
         self.length = 1
     
     
+    def pretty_print_list(self):
+        # For navigation, the temp variable points to temp.next (next node). 
+        temp = self.head
+        print("None", end="")
+        while temp is not None:
+            print(f" <- {temp.value} -> ", end='')
+            temp = temp.next
+        print("None")
+ 
+   
     def print_list(self):
         # For navigation, the temp variable points to temp.next (next node). 
         temp = self.head
@@ -86,11 +96,46 @@ class DoublyLinkedList:
         return True
 
 
+    def pop_first(self):
+        temp = self.head
+        # Returns None if there are no nodes.
+        if self.length == 0:
+            return None
+        # If there is a node, head and tail are equal to None,
+        if self.length == 1:
+            self.tail = None
+            self.head = None
+        else:
+            # The head node points to the next node because the current head will be popped.
+            self.head = self.head.next
+            # Because the first node is head, that's why the prev arrow points to None.
+            self.head.prev = None
+            # Finally, temp.prev points to None because
+            # temp shouldn't point to any nodes.
+            temp.next = None
+        self.length -= 1
+        return temp
+
+
+    def get(self, value):
+        if value < 0 or value >= self.length:
+            return None
+        temp = self.head
+        # To improve the function, we compare the value with the total number of nodes, if
+        # it is less than the total average, we start from the first node and vice versa.
+        if value < self.length / 2:
+            for _ in range(value):
+                temp = temp.next
+        else:
+            temp = self.tail
+            for _ in range(self.length-1, value, -1):
+                temp = temp.prev
+        return temp
 
 if __name__ == "__main__":
-    linked = DoublyLinkedList(23)
-    linked.append(25) 
-    linked.prepend(1)
+    linked = DoublyLinkedList(1)
+    linked.append(2) 
+    linked.append(8) 
+    print(linked.get(1))
     linked.print_list()
-
 
