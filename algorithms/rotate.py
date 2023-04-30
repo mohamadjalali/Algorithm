@@ -12,3 +12,4 @@ def rotate(s, k):
 if __name__ == '__main__':
     print(rotate("Hello", 2))
     print(rotate("World", 3))
+    print(rotate("Scotland", 5))
