@@ -1,6 +1,7 @@
 """
     This algorithm receives a sorted list and a target (number) and then 
     returns the indexes of two numbers whose sum is equal to the target.
+    ٔNote: The index starts from zero.
 """
 
 def two_sum(numbers, target):
@@ -19,4 +20,5 @@ def two_sum(numbers, target):
             p1 += 1
 
 
-print(two_sum([2, 7, 11, 15], 18))
+if __name__ == "__main__":
+    print(two_sum([2, 7, 11, 15], 18))
