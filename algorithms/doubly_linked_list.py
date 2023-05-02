@@ -132,6 +132,24 @@ class DoublyLinkedList:
                 temp = temp.prev
         return temp
 
+    
+    # In the near future, the following methods will be completed.
+    def set_value(self, index, value):
+        pass
+
+    
+    def insert(self, index, value):
+        pass
+
+
+    def remove(self, index):
+        pass
+
+
+    def reverse(self):
+        pass
+
+
 if __name__ == "__main__":
     linked = DoublyLinkedList(1)
     linked.append(2) 
