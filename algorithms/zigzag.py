@@ -8,13 +8,25 @@ class ZigZag:
     def __init__(self, l1, l2):
         self.queue = [l1, l2]
 
-    
-    def next(self):
+
+    def next_1(self):
         v = self.queue.pop(0)
         r = v.pop(0)
         if v:
             self.queue.append(v)
         return r
+
+ 
+    def next(self):
+        if not self.queue:
+            return None
+        v = self.queue.pop(0)
+        if v:
+            r = v.pop(0)
+            self.queue.append(v)
+            if r:
+                return r
+        return self.next()
 
     
     def has_next(self):
