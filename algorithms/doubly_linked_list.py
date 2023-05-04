@@ -16,15 +16,15 @@ class DoublyLinkedList:
         self.tail = new_node
         self.length = 1
     
-    
-    def pretty_print_list(self):
-        # For navigation, the temp variable points to temp.next (next node). 
-        temp = self.head
-        print("None", end="")
-        while temp is not None:
-            print(f" <- {temp.value} -> ", end='')
-            temp = temp.next
-        print("None")
+
+#    def pretty_print_list(self):
+#        # For navigation, the temp variable points to temp.next (next node). 
+#        temp = self.head
+#        print("None", end="")
+#        while temp is not None:
+#            print(f" <- {temp.value} -> ", end='')
+#            temp = temp.next
+#        print("None")
  
    
     def print_list(self):
@@ -153,7 +153,7 @@ class DoublyLinkedList:
 if __name__ == "__main__":
     linked = DoublyLinkedList(1)
     linked.append(2) 
-    linked.append(8) 
-    print(linked.get(1))
+    linked.append(8)
+    print(linked.pop())
     linked.print_list()
 
