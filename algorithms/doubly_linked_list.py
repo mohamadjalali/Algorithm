@@ -132,20 +132,75 @@ class DoublyLinkedList:
                 temp = temp.prev
         return temp
 
-    
-    # In the near future, the following methods will be completed.
-    def set_value(self, index, value):
-        pass
 
-    
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
+
     def insert(self, index, value):
-        pass
+        if index < 0 or index > self.length:
+            return False
+
+        # We use prepend method to avoid to more coding.
+        if index == 0:
+            return self.prepend(value)
+
+        # If the index is equal to the length,
+        # use the append method.
+        if index == self.length:
+            return self.append(value)
+
+        else:
+            new_node = NodeList(value)
+            # First, we specify the before and next nodes
+            before = self.get(index - 1)
+            after  = before.next
+            # The prev and next pointers of the new_node
+            # point to the before and after nodes.
+            new_node.prev  = before
+            new_node.next  = after
+            # Then we do the same thing in reverse, that is, before
+            # and after nodes point to our node between them, i.e. new_node.
+            before.next = new_node
+            after.prev  = new_node
+
+        self.length += 1
+        return True
 
 
     def remove(self, index):
-        pass
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        elif index == self.length - 1:
+            return self.pop()
 
+        # In the following, we have two else, if one is more readable
+        # than the other, then comment one of elses and uncomment the other.
+        else:
+            temp = self.get(index)
 
+            temp.next.prev = temp.prev
+            temp.prev.next = temp.next
+            temp.next = None
+            temp.prev = None
+
+#        else:
+#            before = self.get(index - 1)
+#            after  = before.next.next
+#            before.next = after
+#            after.prev  = before
+
+        self.length -= 1
+        return temp
+
+    
+    # In the near future, the following method will be completed.
     def reverse(self):
         pass
 
@@ -153,7 +208,7 @@ class DoublyLinkedList:
 if __name__ == "__main__":
     linked = DoublyLinkedList(1)
     linked.append(2) 
-    linked.append(8)
-    print(linked.pop())
+    linked.append(4)
+    linked.remove(1)
     linked.print_list()
 
