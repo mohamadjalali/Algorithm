@@ -203,11 +203,6 @@ class DoublyLinkedList:
         self.length -= 1
         return temp
 
-    
-    # In the near future, the following method will be completed.
-    def reverse(self):
-        pass
-
 
     def reverse_v1(self):
         temp = None

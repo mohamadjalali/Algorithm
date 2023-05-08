@@ -25,3 +25,18 @@ def test_doubly_linked_list():
 
     # Test the insert method.
     # assert dll.insert(1, 5)
+
+    # Test the pop_first method.
+    assert dll.pop_first().value == 0
+
+    # Test the get method.
+    assert dll.get(1).value == 20
+
+    # Test the set_value method.
+    assert dll.set_value(1, 9) == True
+
+    # Test the insert method.
+    assert dll.insert(1, 7)
+    
+    # Test the remove method.
+    assert dll.remove(2).value == 9
