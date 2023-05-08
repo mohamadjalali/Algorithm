@@ -88,7 +88,8 @@ class DoublyLinkedList:
             new_node.next  = self.head
             # Also, to connect the return link (prev) with the new node, we act as follows.
             self.head.prev = new_node
-            # As a rule, the new_node node, which represents the first node, its arrow(prev) should point to None.
+            # As a rule, the new_node node, which represents the first
+            # node, its arrow(prev) should point to None.
             new_node.prev = None
             # Finally, the head node must point to new_node.
             self.head = new_node
@@ -134,6 +135,9 @@ class DoublyLinkedList:
 
 
     def set_value(self, index, value):
+        # We use the get method to get the index node. and then if it is 
+        # true (according to the return value of the get method),
+        # we change the value of the mentioned node.
         temp = self.get(index)
         if temp:
             temp.value = value
@@ -205,10 +209,46 @@ class DoublyLinkedList:
         pass
 
 
+    def reverse_v1(self):
+        temp = None
+        current = self.head
+  
+        # Swap next and prev for all nodes 
+        # of doubly linked list
+        while current is not None:
+            temp = current.prev
+            current.prev = current.next
+            current.next = temp
+            current = current.prev
+  
+        # Before changing head, check for the
+        # cases like empty list and list with 
+        # only one node
+        if temp is not None:
+            self.head = temp.prev
+  
+    # Given a reference to the head of a list 
+    # and an integer,inserts a new node on the 
+    # front of list
+
+
+    def reverse_v2(self):
+        temp = self.head
+        while temp is not None:
+            # swap the prev and next pointers of node points to
+            temp.prev, temp.next = temp.next, temp.prev
+
+            # move to the next node
+            temp = temp.prev
+
+        # swap the head and tail pointers
+        self.head, self.tail = self.tail, self.head
+
+
 if __name__ == "__main__":
     linked = DoublyLinkedList(1)
     linked.append(2) 
     linked.append(4)
-    linked.remove(1)
+    linked.reverse_v2()
     linked.print_list()
 
