@@ -9,7 +9,7 @@ def bubble_sort(my_list):
         for j in range(i):
             # check if the current element is greater than the next element
             if my_list[j] > my_list[j+1]:
-                # if so, swap the elements using a temporary variable
+                # if so, swap the elements
                 my_list[j], my_list[j+1] = my_list[j+1], my_list[j]
     # return the sorted list
     return my_list
